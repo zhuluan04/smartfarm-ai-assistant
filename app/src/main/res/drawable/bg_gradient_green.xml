@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- 使用线性渐变，从顶部较深的绿色到底部较浅的绿色 -->
+    <gradient
+        android:startColor="#E8F5E9"
+        android:endColor="#C8E6C9"
+        android:angle="270" />
+
+    <!-- 可选：添加轻微的圆角，如果需要的话（通常ScrollView不需要） -->
+    <!-- <corners android:radius="0dp" /> -->
+
+</shape>

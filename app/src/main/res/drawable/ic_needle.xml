@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="180dp"
+    android:viewportWidth="120"
+    android:viewportHeight="180">
+
+    <!-- 唱针臂 -->
+    <path
+        android:fillColor="#8B8B8B"
+        android:pathData="M25,0 L28,0 L35,140 L32,140 Z"/>
+
+    <!-- 唱针关节 -->
+    <path
+        android:fillColor="#A0A0A0"
+        android:pathData="M26.5,0m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0"/>
+
+    <!-- 唱针头部 -->
+    <path
+        android:fillColor="#707070"
+        android:pathData="M33.5,140 L35,155 L32,155 Z"/>
+
+    <!-- 唱针针尖 -->
+    <path
+        android:fillColor="#505050"
+        android:pathData="M33.5,155 L34,165 L33,165 Z"/>
+
+    <!-- 装饰线 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#606060"
+        android:strokeWidth="0.5"
+        android:pathData="M26,10 L29,10 M26,20 L29,20 M26,30 L29,30"/>
+</vector>

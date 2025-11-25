@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========== 你原有的定义 ========== -->
+    <!-- Action Bar 默认高度 -->
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <!-- 2048 游戏相关尺寸 -->
+    <dimen name="tile_margin">4dp</dimen>
+    <dimen name="grid_padding">8dp</dimen>
+    <dimen name="score_container_padding">16dp</dimen>
+    <dimen name="button_padding_horizontal">32dp</dimen>
+    <dimen name="button_padding_vertical">16dp</dimen>
+
+    <!-- 文字大小 -->
+    <dimen name="tile_text_size_small">24sp</dimen>
+    <dimen name="tile_text_size_medium">28sp</dimen>
+    <dimen name="tile_text_size_large">32sp</dimen>
+    <dimen name="score_label_text_size">14sp</dimen>
+    <dimen name="score_value_text_size">24sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+
+    <!-- ========== 编译器报错缺失的资源 ========== -->
+    <!-- CardView 相关 -->
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+
+    <!-- 文字尺寸 -->
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_subtitle">16sp</dimen>
+
+    <!-- 图标尺寸 -->
+    <dimen name="icon_background_size">48dp</dimen>
+    <dimen name="album_size">300dp</dimen>
+    <dimen name="album_cover_size">180dp</dimen>
+    <dimen name="needle_width">120dp</dimen>
+    <dimen name="needle_height">180dp</dimen>
+    <dimen name="control_button_size">40dp</dimen>
+    <dimen name="control_button_small">32dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="text_size_time">12sp</dimen>
+    <dimen name="text_size_lyric_highlight">18sp</dimen>
+    <dimen name="text_size_lyric_normal">14sp</dimen>
+</resources>

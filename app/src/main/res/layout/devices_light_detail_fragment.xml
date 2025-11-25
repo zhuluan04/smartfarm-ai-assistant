@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- 顶部导航栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_arrow_back"
+                android:padding="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#FF8F00" />
+
+            <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="光照强度监测"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#FF8F00"
+                android:layout_marginStart="12dp" />
+
+            <ImageView
+                android:id="@+id/refreshButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_refresh"
+                android:padding="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#FF8F00" />
+
+        </LinearLayout>
+
+        <!-- 主数据显示卡片 - 大型视觉展示 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:background="@drawable/bg_light_gradient_card">
+
+                <!-- 太阳图标动画区域 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- 光晕效果 -->
+                    <View
+                        android:id="@+id/glowEffect1"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle_glow_large"
+                        android:alpha="0.3" />
+
+                    <View
+                        android:id="@+id/glowEffect2"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle_glow_medium"
+                        android:alpha="0.5" />
+
+                    <View
+                        android:id="@+id/glowEffect3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle_glow_small"
+                        android:alpha="0.7" />
+
+                    <!-- 太阳图标 -->
+                    <ImageView
+                        android:id="@+id/sunIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_sun"
+                        app:tint="#FFA726" />
+
+                    <!-- 光线效果 -->
+                    <ImageView
+                        android:id="@+id/raysIcon"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_sun_rays"
+                        android:alpha="0.6"
+                        app:tint="#FFB74D" />
+
+                </RelativeLayout>
+
+                <!-- 当前光照强度 -->
+                <TextView
+                    android:id="@+id/currentValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="15,200"
+                    android:textSize="56sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF8F00"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lux (勒克斯)"
+                    android:textSize="18sp"
+                    android:textColor="#9E9E9E"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 状态标签 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/statusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="光照充足"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#4CAF50"
+                        android:background="@drawable/bg_status_tag_green"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:drawableStart="@drawable/ic_check_circle"
+                        android:drawablePadding="6dp" />
+
+                </LinearLayout>
+
+                <!-- 传感器状态 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_sensor_status">
+
+                    <View
+                        android:id="@+id/statusIndicator"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_shape"
+                        android:backgroundTint="#4CAF50" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="传感器在线"
+                        android:textSize="13sp"
+                        android:textColor="#6b7280"
+                        android:layout_marginStart="8dp" />
+
+                    <TextView
+                        android:id="@+id/lastUpdateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="实时更新"
+                        android:textSize="12sp"
+                        android:textColor="#9E9E9E" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 光照强度等级指示器 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="光照强度等级"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#2d5a3d"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 渐变进度条 -->
+                <RelativeLayout
+                    android:id="@+id/indicatorContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <!-- 背景进度条 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_light_intensity_bar" />
+
+                    <!-- 当前值指示器 -->
+                    <ImageView
+                        android:id="@+id/intensityIndicator"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_indicator"
+                        android:layout_centerVertical="true"
+                        app:tint="#FF8F00" />
+
+                </RelativeLayout>
+
+                <!-- 等级标签 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="暗"
+                        android:textSize="11sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="start" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="阴天"
+                        android:textSize="11sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="室内明亮"
+                        android:textSize="11sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="直射阳光"
+                        android:textSize="11sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="end" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 参考值表格 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_table_row">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🌑 暗光"
+                            android:textSize="14sp"
+                            android:textColor="#6b7280" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="&lt; 1,000 Lux"
+                            android:textSize="14sp"
+                            android:textColor="#9E9E9E" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="☁️ 阴天"
+                            android:textSize="14sp"
+                            android:textColor="#6b7280" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1,000 - 5,000 Lux"
+                            android:textSize="14sp"
+                            android:textColor="#9E9E9E" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_table_row">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🏠 室内明亮"
+                            android:textSize="14sp"
+                            android:textColor="#6b7280" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5,000 - 10,000 Lux"
+                            android:textSize="14sp"
+                            android:textColor="#9E9E9E" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🌤️ 充足光照"
+                            android:textSize="14sp"
+                            android:textColor="#6b7280"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10,000 - 25,000 Lux"
+                            android:textSize="14sp"
+                            android:textColor="#FF8F00"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_table_row">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="☀️ 直射阳光"
+                            android:textSize="14sp"
+                            android:textColor="#6b7280" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="&gt; 25,000 Lux"
+                            android:textSize="14sp"
+                            android:textColor="#9E9E9E" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 植物生长建议 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_eco"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#4CAF50" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="植物生长建议"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#2d5a3d" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/descriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="当前光照强度充足，非常适合植物进行光合作用。大多数蔬菜和果树在此光照条件下生长良好。"
+                    android:textSize="15sp"
+                    android:textColor="#6b7280"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="适宜种植："
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#2d5a3d"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- 植物标签 - 使用嵌套LinearLayout实现换行 -->
+                <LinearLayout
+                    android:id="@+id/plantChipContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🍅 番茄"
+                            android:textSize="14sp"
+                            android:textColor="#2d5a3d"
+                            android:background="@drawable/bg_chip_plant"
+                            android:padding="8dp"
+                            android:layout_margin="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🥒 黄瓜"
+                            android:textSize="14sp"
+                            android:textColor="#2d5a3d"
+                            android:background="@drawable/bg_chip_plant"
+                            android:padding="8dp"
+                            android:layout_margin="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌶️ 辣椒"
+                            android:textSize="14sp"
+                            android:textColor="#2d5a3d"
+                            android:background="@drawable/bg_chip_plant"
+                            android:padding="8dp"
+                            android:layout_margin="4dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🥬 生菜"
+                            android:textSize="14sp"
+                            android:textColor="#2d5a3d"
+                            android:background="@drawable/bg_chip_plant"
+                            android:padding="8dp"
+                            android:layout_margin="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌻 向日葵"
+                            android:textSize="14sp"
+                            android:textColor="#2d5a3d"
+                            android:background="@drawable/bg_chip_plant"
+                            android:padding="8dp"
+                            android:layout_margin="4dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 24小时光照趋势 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trendCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_timeline"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#FF8F00" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="24小时光照趋势"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#2d5a3d" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看详情 >"
+                        android:textSize="13sp"
+                        android:textColor="#FF8F00"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- 简化的趋势图 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <!-- 第一个柱状图 - 20%高度 (24dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="24dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第二个柱状图 - 30%高度 (36dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第三个柱状图 - 50%高度 (60dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第四个柱状图 - 75%高度 (90dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第五个柱状图 - 90%高度 (108dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="108dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第六个柱状图 - 100%高度 (120dp) 高亮 -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar_highlight"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第七个柱状图 - 85%高度 (102dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="102dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第八个柱状图 - 70%高度 (84dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="84dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第九个柱状图 - 45%高度 (54dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第十个柱状图 - 25%高度 (30dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第十一个柱状图 - 15%高度 (18dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="18dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar"
+                        android:layout_marginEnd="4dp" />
+
+                    <!-- 第十二个柱状图 - 10%高度 (12dp) -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="12dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_chart_bar" />
+
+                </LinearLayout>
+
+                <!-- 时间标签 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0:00"
+                        android:textSize="10sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="start" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="6:00"
+                        android:textSize="10sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="12:00"
+                        android:textSize="10sp"
+                        android:textColor="#FF8F00"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="18:00"
+                        android:textSize="10sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="24:00"
+                        android:textSize="10sp"
+                        android:textColor="#9E9E9E"
+                        android:gravity="end" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 快速操作按钮 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="快速操作"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2d5a3d"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/historyCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_history"
+                        android:layout_marginBottom="8dp"
+                        app:tint="#FF8F00" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="历史数据"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2d5a3d" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/settingsCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_settings"
+                        android:layout_marginBottom="8dp"
+                        app:tint="#FF8F00" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="传感器设置"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2d5a3d" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- 更多功能 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/alertCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_notifications"
+                    android:layout_marginEnd="12dp"
+                    app:tint="#FF8F00" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="光照预警设置"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2d5a3d" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:tint="#9E9E9E" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/compareCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_compare"
+                    android:layout_marginEnd="12dp"
+                    app:tint="#FF8F00" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="多日对比分析"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2d5a3d" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:tint="#9E9E9E" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/exportCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:backgroundTint="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_download"
+                    android:layout_marginEnd="12dp"
+                    app:tint="#FF8F00" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="导出光照报告"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2d5a3d" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    app:tint="#9E9E9E" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+

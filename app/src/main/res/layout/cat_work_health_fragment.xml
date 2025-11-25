@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_health">
+
+    <TextView
+        android:text="🌿 猫咪健康监测"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#E8F5E9"
+        android:layout_marginBottom="24dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        android:backgroundTint="#FFFFFF"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvHealthInfo"
+                android:text="今日健康指数：良好 ✅"
+                android:textSize="18sp"
+                android:textColor="#43A047"
+                android:layout_marginBottom="16dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <ProgressBar
+                android:id="@+id/healthBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:max="100"
+                android:progress="85"
+                android:progressTint="#66BB6A"
+                android:backgroundTint="#C8E6C9"/>
+
+            <TextView
+                android:text="猫咪活力值 85%"
+                android:textColor="#66BB6A"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

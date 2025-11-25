@@ -1,0 +1,54 @@
+<!-- res/values/themes.xml -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- ========== 阳光绿色主题配色 ========== -->
+
+        <!-- 主色调：阳光绿 -->
+        <item name="colorPrimary">#4CAF50</item>           <!-- 活力绿 -->
+        <item name="colorOnPrimary">#FFFFFF</item>         <!-- 主色上文字/图标用白色 -->
+        <item name="colorPrimaryContainer">#C8E6C9</item>  <!-- 主色容器背景（浅绿） -->
+        <item name="colorOnPrimaryContainer">#1B5E20</item> <!-- 容器上文字用深绿 -->
+
+        <!-- 辅助色：阳光黄（万能强调色） -->
+        <item name="colorSecondary">#FFEB3B</item>         <!-- 阳光黄 -->
+        <item name="colorOnSecondary">#000000</item>       <!-- 辅色上文字用黑色 -->
+        <item name="colorSecondaryContainer">#FFF9C4</item> <!-- 辅色容器背景（奶油黄） -->
+        <item name="colorOnSecondaryContainer">#7F6003</item> <!-- 容器文字用深棕黄 -->
+
+        <!-- 背景 & 表面 -->
+        <item name="colorOnBackground">#121212</item>      <!-- 背景上文字 -->
+        <item name="colorSurface">#FFFFFF</item>           <!-- 卡片/表单等表面色 -->
+        <item name="colorOnSurface">#121212</item>         <!-- 表面上文字 -->
+
+        <!-- 状态栏 -->
+        <item name="android:statusBarColor">@color/green_primary_dark</item>
+        <item name="android:windowLightStatusBar">true</item> <!-- 状态栏图标深色（适合浅背景） -->
+
+        <!-- 错误色 -->
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorErrorContainer">#FFDAD6</item>
+        <item name="colorOnErrorContainer">#680003</item>
+
+        <!-- ========== 可选：微调组件样式 ========== -->
+        <!-- 按钮圆角 -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.LargeComponent</item>
+    </style>
+
+    <!-- 如果你想添加圆角样式，可以加上下面这些（可选） -->
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- 最终应用的主题 -->
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+</resources>

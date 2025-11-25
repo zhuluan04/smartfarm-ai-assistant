@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:padding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- 标题卡片 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:elevation="4dp"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="?android:attr/textColorPrimary"
+                android:text="AI智能备忘录标题" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="2025-10-20 18:00"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 图片部分 -->
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_image_holder"
+            android:contentDescription="备忘录图片" />
+
+        <!-- 内容卡片 -->
+        <LinearLayout
+            android:id="@+id/content_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这里是备忘录的主要内容……"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="6dp" />
+        </LinearLayout>
+
+        <!-- AI 建议卡片 -->
+        <LinearLayout
+            android:id="@+id/ai_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_ai_card"
+            android:elevation="6dp"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_ai_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🤖 智能助手建议"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_ai_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AI 正在生成建议..."
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+
+        <!-- 操作按钮 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btn_ai_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🧠 AI 总结"
+                android:backgroundTint="#4285F4"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="12dp"/>
+
+            <Button
+                android:id="@+id/btn_tts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔊 语音朗读"
+                android:backgroundTint="#34A853"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="180dp"
+    android:viewportWidth="180"
+    android:viewportHeight="180">
+
+    <!-- 圆形背景 -->
+    <path
+        android:fillColor="#DD001B"
+        android:pathData="M90,90 m-90,0 a90,90 0 1,1 180,0 a90,90 0 1,1 -180,0"/>
+
+    <!-- 音符1 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M70,60 L75,60 L75,120 C75,127 70,130 65,130 C58,130 53,125 53,118 C53,111 58,106 65,106 C67,106 69,107 70,108 Z"/>
+
+    <!-- 音符2 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,50 L105,50 L105,110 C105,117 100,120 95,120 C88,120 83,115 83,108 C83,101 88,96 95,96 C97,96 99,97 100,98 Z"/>
+
+    <!-- 连接线 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M75,60 L105,50 L105,55 L75,65 Z"/>
+
+</vector>
+
+
+

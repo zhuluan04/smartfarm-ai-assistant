@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 前景矢量：叶芽 + 传感节点（用于 adaptive icon 的 foreground） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 主茎（深绿） -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M54,86 C54,86 52,70 54,54 C56,38 62,34 66,28 C70,22 76,22 80,26 C84,30 82,36 78,40 C74,44 68,46 64,52 C60,58 62,70 62,70 L54,86 Z"
+        android:fillType="evenOdd"/>
+
+    <!-- 左叶（渐变替代：使用近似色） -->
+    <path
+        android:fillColor="#43A047"
+        android:pathData="M54,52 C44,46 28,42 22,52 C16,62 26,74 40,76 C46,77 52,68 54,62 C55,58 54,54 54,52 Z"
+        android:fillType="evenOdd"/>
+
+    <!-- 右叶 -->
+    <path
+        android:fillColor="#66BB6A"
+        android:pathData="M64,48 C74,42 88,40 94,50 C100,60 92,74 78,76 C72,77 66,70 64,64 C63,60 64,56 64,48 Z"
+        android:fillType="evenOdd"/>
+
+    <!-- IoT 节点：小圆 + 连接线（青色/蓝色） -->
+    <path
+        android:fillColor="#039BE5"
+        android:pathData="M30,26 A6,6 0 1,1 30,14 A6,6 0 0,1 30,26 Z"/>
+
+    <path
+        android:strokeColor="#0288D1"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M30,26 L44,36"/>
+
+    <!-- 信号波纹（AI / 数字孪生 意象） -->
+    <path
+        android:strokeColor="#00ACC1"
+        android:strokeWidth="2"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M84,14 C88,18 92,24 92,32"/>
+
+    <path
+        android:strokeColor="#26C6DA"
+        android:strokeWidth="1.2"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M88,8 C94,14 98,22 98,34"/>
+
+    <!-- 小圆点强调（信号源） -->
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M84,10 A4,4 0 1,1 84,2 A4,4 0 0,1 84,10 Z"/>
+</vector>

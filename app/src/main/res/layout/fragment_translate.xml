@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/translate_background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="翻译"
+        android:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleTextColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 语言栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/translate_card_bg"
+            android:padding="12dp">
+
+            <Spinner
+                android:id="@+id/sourceLanguageSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/swapButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:icon="@drawable/ic_swap_horiz"
+                app:iconTint="@android:color/holo_blue_dark"/>
+
+            <Spinner
+                android:id="@+id/targetLanguageSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"/>
+        </LinearLayout>
+
+        <!-- 输入框 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/translate_input_bg"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/sourceEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="请输入要翻译的文本..."
+                android:gravity="top"
+                android:textSize="16sp"
+                android:inputType="textMultiLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/voiceInputButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    app:icon="@drawable/ic_mic"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/clearButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_marginStart="8dp"
+                    app:icon="@drawable/ic_clear"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/translateButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="翻译"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/translate_button_bg"/>
+
+        <!-- 结果 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/translate_output_bg"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/targetTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="翻译结果将显示在这里..."
+                android:textSize="16sp"
+                android:gravity="top"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/voiceOutputButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    app:icon="@drawable/ic_volume_up"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/copyButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_marginStart="8dp"
+                    app:icon="@drawable/ic_content_copy"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/historyButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="📋 翻译历史"/>
+    </LinearLayout>
+</LinearLayout>

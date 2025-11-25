@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+
+    <!-- 外圈黑色 -->
+    <path
+        android:fillColor="#1A1A1A"
+        android:pathData="M150,150m-150,0a150,150 0,1 1,300 0a150,150 0,1 1,-300 0"/>
+
+    <!-- 纹理圈1 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2A2A2A"
+        android:strokeWidth="1"
+        android:pathData="M150,150m-140,0a140,140 0,1 1,280 0a140,140 0,1 1,-280 0"/>
+
+    <!-- 纹理圈2 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2A2A2A"
+        android:strokeWidth="1"
+        android:pathData="M150,150m-130,0a130,130 0,1 1,260 0a130,130 0,1 1,-260 0"/>
+
+    <!-- 纹理圈3 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2A2A2A"
+        android:strokeWidth="1"
+        android:pathData="M150,150m-120,0a120,120 0,1 1,240 0a120,120 0,1 1,-240 0"/>
+
+    <!-- 纹理圈4 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#2A2A2A"
+        android:strokeWidth="1"
+        android:pathData="M150,150m-110,0a110,110 0,1 1,220 0a110,110 0,1 1,-220 0"/>
+
+    <!-- 内圈 -->
+    <path
+        android:fillColor="#0D0D0D"
+        android:pathData="M150,150m-100,0a100,100 0,1 1,200 0a100,100 0,1 1,-200 0"/>
+
+    <!-- 中心孔 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M150,150m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0"/>
+</vector>

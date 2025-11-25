@@ -1,0 +1,10 @@
+<!-- res/drawable/goblin_hurt_right.xml -->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/goblin_hurt_right_1" android:duration="100" />
+    <item android:drawable="@drawable/goblin_hurt_right_2" android:duration="100" />
+    <item android:drawable="@drawable/goblin_hurt_right_3" android:duration="100" />
+    <item android:drawable="@drawable/goblin_hurt_right_4" android:duration="100" />
+    <item android:drawable="@drawable/goblin_hurt_right_5" android:duration="100" />
+    <item android:drawable="@drawable/goblin_hurt_right_6" android:duration="100" />
+</animation-list>

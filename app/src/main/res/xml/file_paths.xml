@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 允许访问应用私有图片路径 -->
+    <external-files-path
+        name="my_images"
+        path="Pictures/" />
+
+    <!-- 如果你用到公共DCIM目录，也可以加 -->
+    <external-path
+        name="external"
+        path="." />
+</paths>

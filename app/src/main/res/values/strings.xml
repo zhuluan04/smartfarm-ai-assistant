@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">万物照</string>
+    <string name="title_login">登录</string>
+    <string name="hint_username">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="btn_login">登录</string>
+    <string name="link_register">还没有账号？去注册</string>
+    <string name="desc_go_to_register">点击前往注册页面</string>
+    <!-- 分析 -->
+    <string name="default_analysis_result">请上传一张植物图片进行分析…</string>
+    <string name="image_content_desc">植物图片</string>
+    <string name="select_image">选择图片</string>
+    <string name="fab_ai_chat_description">打开AI助手对话</string>
+    <string name="game_2048_name">2048游戏</string>
+    <string name="score_label">分数</string>
+    <string name="best_score_label">最高分</string>
+    <string name="new_game_button_label">新游戏</string>
+
+    <string name="chat_history">聊天记录</string>
+    <string name="toolbar_back">小农助手，返回上一页</string>
+    <string name="hint_input_message">向小农助手提问...</string>
+    <string name="input_message_desc">输入您的问题</string>
+    <string name="send_message">发送消息</string>
+    <string name="user_message">您说：%1$s</string>
+    <string name="ai_message">助手回复：%1$s</string>
+
+    <string name="music_app_name">音乐播放器</string>
+    <string name="now_playing">正在播放</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="previous">上一曲</string>
+    <string name="next">下一曲</string>
+    <string name="repeat">列表循环</string>
+    <string name="repeat_one">单曲循环</string>
+    <string name="shuffle">随机播放</string>
+    <string name="playlist">播放列表</string>
+    <string name="unknown_song">未知歌曲</string>
+    <string name="unknown_artist">未知歌手</string>
+    <string name="time_format">%02d:%02d</string>
+</resources>
+

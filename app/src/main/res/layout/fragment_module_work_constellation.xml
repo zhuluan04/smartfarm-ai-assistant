@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 添加的 Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="星座查询"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
+    <!-- 原有 ScrollView 内容 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_constellation_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 星座结果 -->
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textSize="20sp"
+                android:textColor="#1e1f22"
+                android:textStyle="bold" />
+
+            <!-- 输入框 -->
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入你的出生日期 (格式: MM/DD)"
+                android:inputType="text"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@android:drawable/edit_text" />
+
+            <!-- 按钮 -->
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="猜我的星座"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2196F3"
+                android:layout_marginTop="12dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+
+            <!-- 标题 -->
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="星座简介："
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1e1f22"
+                android:layout_marginBottom="8dp" />
+
+            <!-- 简介正文 -->
+            <TextView
+                android:id="@+id/textViewConstellationInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这里会显示对应星座的简介……"
+                android:textSize="16sp"
+                android:textColor="#1e1f22"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- 底部日期选择器 -->
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:layout_marginTop="24dp"
+                android:theme="@style/PurpleDatePickerTheme"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+

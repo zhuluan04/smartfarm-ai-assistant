@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    监控查看当前的温湿度-->
+    <item
+        android:id="@+id/nav_monitor"
+        android:title="监控"
+        android:icon="@drawable/ic_monitor" /> <!-- 你需要提供图标 -->
+<!--    设置监控模式-->
+    <item
+        android:id="@+id/nav_settings"
+        android:title="模式"
+        android:icon="@drawable/ic_module" />
+    <item
+        android:id="@+id/nav_person"
+        android:title="个人"
+        android:icon="@drawable/ic_settings" />
+</menu>

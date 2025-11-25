@@ -1,0 +1,11 @@
+{
+  "operations": [
+    {
+      "op_name": "wa/model.22/Mul_2",
+      "param_target": "inputs",
+      "param_name": "y",
+      "values": [8.0],
+      "shape": [1, 8400, 1]
+    }
+  ]
+}
