@@ -249,8 +249,8 @@ public class PersonFragment extends Fragment {
 
     // 🔄 数据加载和更新方法
     private void loadUserProfile() {
-        String savedUsername = sharedPreferences.getString(KEY_USERNAME, "林炜宾");
-        String savedEmail = sharedPreferences.getString(KEY_EMAIL, "linjiu525153283@gmail.com");
+        String savedUsername = sharedPreferences.getString(KEY_USERNAME, "朱栾");
+        String savedEmail = sharedPreferences.getString(KEY_EMAIL, "guodesong04@163.com");
 
         userProfile.username = savedUsername;
         userProfile.email = savedEmail;
