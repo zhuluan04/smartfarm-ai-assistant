@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,9 +32,8 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "LoginActivity";
-    // 演示开关：true 时跳过后端校验，使用本地 mock 账号登录
-    private static final boolean USE_MOCK_LOGIN = true;
+    // true 时允许演示账号本地登录；发布版本务必关闭
+    private static final boolean USE_MOCK_LOGIN = false;
 
     private EditText etUsername;
     private EditText etPassword;
@@ -43,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvGoToRegister;
     private CheckBox cbRememberMe;
 
-    private OkHttpClient client = new OkHttpClient();
-    private Gson gson = new Gson();
+    private final OkHttpClient client = new OkHttpClient();
+    private final Gson gson = new Gson();
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     @Override
@@ -68,20 +66,14 @@ public class LoginActivity extends AppCompatActivity {
         cbRememberMe = findViewById(R.id.cbRememberMe);
     }
 
-    // 自动登录
     private void autoLoginCheck() {
         SharedPreferences sp = getSharedPreferences(AppConfig.SHARED_PREFS_NAME, MODE_PRIVATE);
         String token = sp.getString("token", null);
-        boolean remember = sp.getBoolean("remember", false);
-
-        Log.d(TAG, "自动登录检查 - token: " + token + ", remember: " + remember);
-
-        if (token != null && !token.isEmpty() && remember) {
+        if (token != null && !token.isEmpty()) {
             jumpToHome();
         }
     }
 
-    // 加载保存的账号密码
     private void loadLoginInfo() {
         SharedPreferences sp = getSharedPreferences(AppConfig.SHARED_PREFS_NAME, MODE_PRIVATE);
         boolean remember = sp.getBoolean("remember", false);
@@ -89,11 +81,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (remember) {
             etUsername.setText(sp.getString("username", ""));
-            etPassword.setText(sp.getString("password", ""));
         }
     }
 
-    // 登录
     private void performLogin() {
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -126,66 +116,70 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful() || response.body() == null) {
+                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, "登录失败：服务器异常", Toast.LENGTH_SHORT).show());
+                    return;
+                }
+
                 final String respBody = response.body().string();
                 runOnUiThread(() -> {
                     try {
                         UserResponse resp = gson.fromJson(respBody, UserResponse.class);
 
-                        if (resp.code == 200) {
-                            saveLoginInfo(username, password, resp.data.token);
-                            Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                        if (resp == null || resp.data == null) {
+                            Toast.makeText(LoginActivity.this, "登录失败：返回数据异常", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (resp.code == 200 && resp.data.token != null && !resp.data.token.isEmpty()) {
+                            saveLoginInfo(username, resp.data.token);
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             jumpToHome();
                         } else {
-                            Toast.makeText(LoginActivity.this, resp.msg, Toast.LENGTH_SHORT).show();
+                            String msg = resp.msg == null || resp.msg.isEmpty() ? "账号或密码错误" : resp.msg;
+                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         Toast.makeText(LoginActivity.this, "解析错误: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-                return ;
             }
         });
     }
 
-    // 本地 mock 登录：仅用于演示，无需网络
     private void mockLogin(String username, String password) {
         if ("gds".equals(username) && "123456".equals(password)) {
             String token = "mock-token-gds";
-            saveLoginInfo(username, password, token);
-            Toast.makeText(this, "登录成功！（本地演示）", Toast.LENGTH_SHORT).show();
+            saveLoginInfo(username, token);
+            Toast.makeText(this, "登录成功（本地演示）", Toast.LENGTH_SHORT).show();
             jumpToHome();
         } else {
             Toast.makeText(this, "演示账号或密码不正确", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // 保存登录信息
-    private void saveLoginInfo(String username, String password, String token) {
+    private void saveLoginInfo(String username, String token) {
         SharedPreferences sp = getSharedPreferences(AppConfig.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
         if (cbRememberMe.isChecked()) {
             editor.putString("username", username);
-            editor.putString("password", password);
             editor.putBoolean("remember", true);
         } else {
             editor.remove("username");
-            editor.remove("password");
             editor.putBoolean("remember", false);
         }
 
+        // 清理历史遗留的明文密码字段
+        editor.remove("password");
         editor.putString("token", token);
         editor.apply();
-
-        Log.d(TAG, "保存登录信息 - token: " + token + ", remember: " + cbRememberMe.isChecked());
     }
 
-    // 注册
     private void performRegister() {
-        // 同上，略（可复制 performLogin 逻辑）
+        // TODO: implement register flow
     }
 
-    // 统一跳转主页
     private void jumpToHome() {
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
